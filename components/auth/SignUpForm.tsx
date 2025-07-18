@@ -43,9 +43,10 @@ const signUpSchema = z.object({
     .email('Please enter a valid email address'),
   password: passwordSchema,
   confirmPassword: z.string(),
-  terms: z.boolean().refine(val => val === true, {
-    message: 'You must accept the terms and conditions',
-  }),
+  terms: z.boolean().refine(
+    (val) => val === true,
+    { message: 'You must accept the terms and conditions' }
+  ),
 }).refine((data) => data.password === data.confirmPassword, {
   message: "Passwords don't match",
   path: ['confirmPassword'],
@@ -94,6 +95,7 @@ export function SignUpForm() {
     register,
     handleSubmit,
     watch,
+    setValue,
     formState: { errors },
     setError,
     reset
@@ -148,10 +150,12 @@ export function SignUpForm() {
         password: data.password
       });
 
-      // On successful sign up, reset form and redirect to verification
+      // On successful sign up, reset form and redirect to dashboard
       reset();
-      router.push('/verify-email');
-      toast.success('Account created successfully! Please check your email to verify your account.');
+      toast.success('Account created successfully! Redirecting to dashboard...');
+      setTimeout(() => {
+        router.push('/dashboard');
+      }, 1500);
     } catch (error) {
       console.error('Sign up error:', error);
       const errorMessage = error instanceof Error ? error.message : 'An unexpected error occurred';
@@ -337,12 +341,17 @@ export function SignUpForm() {
             
             <div className="space-y-4 pt-2">
               <div className="flex items-start space-x-2">
-                <Checkbox
-                  id="terms"
-                  {...register('terms')}
-                  className={`h-4 w-4 mt-0.5 rounded border-input ${errors.terms ? 'border-destructive' : ''}`}
-                  disabled={isLoading}
-                />
+                <div className="flex items-center">
+                  <Checkbox
+                    id="terms"
+                    checked={watch('terms')}
+                    onCheckedChange={(checked) => {
+                      setValue('terms', checked === true, { shouldValidate: true });
+                    }}
+                    className={`h-4 w-4 rounded border-input ${errors.terms ? 'border-destructive' : ''}`}
+                    disabled={isLoading}
+                  />
+                </div>
                 <div className="grid gap-1.5 leading-none">
                   <label
                     htmlFor="terms"

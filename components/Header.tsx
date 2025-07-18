@@ -209,18 +209,30 @@ export function Header() {
                         </Link>
                       </Button>
                       
-                      <Button variant="ghost" className="justify-start">
-                        <div className="flex items-center space-x-2">
-                          <User className="w-4 h-4" />
-                          <span>Register</span>
-                        </div>
+                      <Button 
+                        variant="ghost" 
+                        className="justify-start"
+                        asChild
+                      >
+                        <Link href="/sign-up">
+                          <div className="flex items-center space-x-2">
+                            <UserPlus className="w-4 h-4" />
+                            <span>Register</span>
+                          </div>
+                        </Link>
                       </Button>
                       
-                      <Button variant="ghost" className="justify-start">
-                        <div className="flex items-center space-x-2">
-                          <User className="w-4 h-4" />
-                          <span>Sign In</span>
-                        </div>
+                      <Button 
+                        variant="ghost" 
+                        className="justify-start"
+                        asChild
+                      >
+                        <Link href="/sign-in">
+                          <div className="flex items-center space-x-2">
+                            <LogIn className="w-4 h-4" />
+                            <span>Sign In</span>
+                          </div>
+                        </Link>
                       </Button>
                     </nav>
 
