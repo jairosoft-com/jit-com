@@ -181,7 +181,7 @@ export function SignUpForm() {
   ];
 
   return (
-    <div className="w-full max-w-md mx-auto">
+    <div className="w-full max-w-l mx-auto">
       <Card className="border-0 shadow-lg overflow-hidden">
         <CardHeader className="bg-gradient-to-r from-primary to-primary/90 text-white p-8 pb-6">
           <CardTitle className="text-2xl font-bold">Create an Account</CardTitle>

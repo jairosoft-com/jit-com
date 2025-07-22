@@ -3,6 +3,8 @@ import { HeroSection } from '../components/HeroSection'
 import { TrainingPrograms } from '../components/TrainingPrograms'
 import { Footer } from '../components/Footer'
 import { Separator } from '../components/ui/separator'
+import Link from 'next/link'
+import { Button } from '@/components/ui/button'
 
 export default function HomePage() {
   return (
@@ -12,6 +14,7 @@ export default function HomePage() {
         <HeroSection />
         <Separator className="opacity-50" />
         <TrainingPrograms />
+        <Separator className="opacity-50" />
       </main>
       <Footer />
     </>

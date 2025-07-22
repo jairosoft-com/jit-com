@@ -82,7 +82,7 @@ export function Header() {
                 </NavigationMenuItem>
                 <NavigationMenuItem>
                   <NavigationMenuLink 
-                    href="/sign-up"
+                    href="/register"
                     className="text-muted-foreground hover:text-primary px-3 py-2 text-sm font-medium transition-colors cursor-pointer flex items-center space-x-1"
                   >
                     <UserPlus className="w-4 h-4" />
@@ -214,7 +214,7 @@ export function Header() {
                         className="justify-start"
                         asChild
                       >
-                        <Link href="/sign-up">
+                        <Link href="/register">
                           <div className="flex items-center space-x-2">
                             <UserPlus className="w-4 h-4" />
                             <span>Register</span>
