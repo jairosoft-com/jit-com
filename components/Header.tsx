@@ -1,6 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import { Button } from "./ui/button";
 import { NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuLink } from "./ui/navigation-menu";
+import { useRouter } from "next/navigation";
 import { Avatar, AvatarFallback } from "./ui/avatar";
 import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from "./ui/sheet";
 import { Badge } from "./ui/badge";
@@ -8,9 +11,10 @@ import { Separator } from "./ui/separator";
 import { Card, CardContent } from "./ui/card";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./ui/tooltip";
 import { ThemeToggle } from "./ThemeToggle";
-import { Menu, Bell, Search, User, BookOpen, Award, Phone, Palette } from "lucide-react";
+import { Menu, Bell, Search, User, BookOpen, Award, Phone, Palette, Home, LogIn, UserPlus } from "lucide-react";
 
 export function Header() {
+  const router = useRouter();
   return (
     <TooltipProvider>
       <header className="w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border sticky top-0 z-50 transition-colors duration-300">
@@ -42,47 +46,47 @@ export function Header() {
             <NavigationMenu className="hidden md:flex">
               <NavigationMenuList>
                 <NavigationMenuItem>
-                  <NavigationMenuLink asChild>
-                    <Link 
-                      href="/"
-                      className="text-foreground hover:text-primary px-3 py-2 text-sm font-medium transition-colors cursor-pointer group"
-                    >
-                      Home
-                    </Link>
+                  <NavigationMenuLink 
+                    href="/"
+                    className="text-foreground hover:text-primary px-3 py-2 text-sm font-medium transition-colors cursor-pointer group flex items-center space-x-1"
+                  >
+                    <Home className="w-4 h-4" />
+                    <span>Home</span>
                   </NavigationMenuLink>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                  <NavigationMenuLink className="text-muted-foreground hover:text-primary px-3 py-2 text-sm font-medium transition-colors cursor-pointer">
-                    <div className="flex items-center space-x-1">
-                      <BookOpen className="w-4 h-4" />
-                      <span>Courses</span>
-                    </div>
+                  <NavigationMenuLink 
+                    className="text-muted-foreground hover:text-primary px-3 py-2 text-sm font-medium transition-colors cursor-pointer flex items-center space-x-1"
+                  >
+                    <BookOpen className="w-4 h-4" />
+                    <span>Courses</span>
                   </NavigationMenuLink>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                  <NavigationMenuLink asChild>
-                    <Link 
-                      href="/showcase"
-                      className="text-muted-foreground hover:text-primary px-3 py-2 text-sm font-medium transition-colors cursor-pointer"
-                    >
-                      <div className="flex items-center space-x-1">
-                        <Palette className="w-4 h-4" />
-                        <span>Showcase</span>
-                      </div>
-                    </Link>
+                  <NavigationMenuLink 
+                    href="/showcase"
+                    className="text-muted-foreground hover:text-primary px-3 py-2 text-sm font-medium transition-colors cursor-pointer flex items-center space-x-1"
+                  >
+                    <Palette className="w-4 h-4" />
+                    <span>Showcase</span>
                   </NavigationMenuLink>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                  <NavigationMenuLink className="text-muted-foreground hover:text-primary px-3 py-2 text-sm font-medium transition-colors cursor-pointer">
-                    Register
+                  <NavigationMenuLink 
+                    href="/sign-in"
+                    className="text-muted-foreground hover:text-primary px-3 py-2 text-sm font-medium transition-colors cursor-pointer flex items-center space-x-1"
+                  >
+                    <LogIn className="w-4 h-4" />
+                    <span>Sign In</span>
                   </NavigationMenuLink>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                  <NavigationMenuLink className="text-muted-foreground hover:text-primary px-3 py-2 text-sm font-medium transition-colors cursor-pointer">
-                    <div className="flex items-center space-x-1">
-                      <User className="w-4 h-4" />
-                      <span>Sign In</span>
-                    </div>
+                  <NavigationMenuLink 
+                    href="/sign-up"
+                    className="text-muted-foreground hover:text-primary px-3 py-2 text-sm font-medium transition-colors cursor-pointer flex items-center space-x-1"
+                  >
+                    <UserPlus className="w-4 h-4" />
+                    <span>Register</span>
                   </NavigationMenuLink>
                 </NavigationMenuItem>
               </NavigationMenuList>
@@ -121,7 +125,7 @@ export function Header() {
               <Separator orientation="vertical" className="h-6" />
               
               <Button size="sm" className="ml-2">
-                Sign Up
+                <Link href="/sign-up">Sign Up</Link>
               </Button>
             </div>
 
@@ -205,18 +209,30 @@ export function Header() {
                         </Link>
                       </Button>
                       
-                      <Button variant="ghost" className="justify-start">
-                        <div className="flex items-center space-x-2">
-                          <User className="w-4 h-4" />
-                          <span>Register</span>
-                        </div>
+                      <Button 
+                        variant="ghost" 
+                        className="justify-start"
+                        asChild
+                      >
+                        <Link href="/sign-up">
+                          <div className="flex items-center space-x-2">
+                            <UserPlus className="w-4 h-4" />
+                            <span>Register</span>
+                          </div>
+                        </Link>
                       </Button>
                       
-                      <Button variant="ghost" className="justify-start">
-                        <div className="flex items-center space-x-2">
-                          <User className="w-4 h-4" />
-                          <span>Sign In</span>
-                        </div>
+                      <Button 
+                        variant="ghost" 
+                        className="justify-start"
+                        asChild
+                      >
+                        <Link href="/sign-in">
+                          <div className="flex items-center space-x-2">
+                            <LogIn className="w-4 h-4" />
+                            <span>Sign In</span>
+                          </div>
+                        </Link>
                       </Button>
                     </nav>
 
