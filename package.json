@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.1.1",
     "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-alert-dialog": "^1.0.5",
     "@radix-ui/react-aspect-ratio": "^1.0.3",
@@ -54,7 +55,8 @@
     "sonner": "^1.0.3",
     "tailwind-merge": "^1.14.0",
     "tailwindcss-animate": "^1.0.7",
-    "vaul": "^0.7.0"
+    "vaul": "^0.7.0",
+    "zod": "^4.0.5"
   },
   "devDependencies": {
     "@types/node": "^20.5.2",
